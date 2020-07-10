@@ -39,12 +39,12 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -57,12 +57,12 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -75,12 +75,12 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -93,13 +93,13 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"@type\" : \"hello:Type\"," + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -112,13 +112,13 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"@type\" : \"Person\"," + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -133,13 +133,13 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"@type\" : \"http://schema.org/Person\"," + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -154,13 +154,13 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"@type\" : \"asdf:Person\"," + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -180,7 +180,7 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"@type\" : \"Person\"," + NEWLINE +
@@ -191,7 +191,7 @@ class JacksonJsonldTest {
 				"  }," + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -205,12 +205,12 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"name\" : \"Example Name\"," + NEWLINE +
 				"  \"@id\" : \"http://example.com/person/1234\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -223,12 +223,12 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -244,7 +244,7 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"@context\" : {" + NEWLINE +
@@ -252,7 +252,7 @@ class JacksonJsonldTest {
 				"  }," + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -267,12 +267,12 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
 				"  \"name\" : \"Example Name\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 	
 	@Test
@@ -292,7 +292,7 @@ class JacksonJsonldTest {
 			public String name = "Example Name";
 		}
 		
-		Person alex = new Person();
+		Person person = new Person();
 		
 		assertEquals("{" + NEWLINE +
 				"  \"@context\" : {" + NEWLINE +
@@ -314,6 +314,6 @@ class JacksonJsonldTest {
 				"  \"linkField3\" : \"http://example.com/link3\"," + NEWLINE +
 				"  \"linkField2\" : \"http://example.com/link2\"," + NEWLINE +
 				"  \"linkField1\" : \"http://example.com/link1\"" + NEWLINE +
-				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(alex));
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person));
 	}
 }
