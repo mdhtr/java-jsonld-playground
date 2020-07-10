@@ -18,7 +18,7 @@ import ioinformarics.oss.jackson.module.jsonld.annotation.JsonldResource;
 import ioinformarics.oss.jackson.module.jsonld.annotation.JsonldType;
 import ioinformarics.oss.jackson.module.jsonld.annotation.JsonldTypeFromJavaClass;
 
-class JacksonJsonldTest {
+class JacksonJsonldSerializationTest {
 	private static final String NEWLINE = System.getProperty("line.separator");
 	
 	private ObjectMapper objectMapper;

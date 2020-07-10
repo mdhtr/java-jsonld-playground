@@ -21,7 +21,7 @@ import de.escalon.hypermedia.hydra.mapping.Term;
 import de.escalon.hypermedia.hydra.mapping.Vocab;
 import de.escalon.hypermedia.hydra.serialize.JacksonHydraSerializer;
 
-class HydraJsonldTest {
+class HydraJsonldSerializationTest {
 	private static final String NEWLINE = System.getProperty("line.separator");
 	private ObjectMapper objectMapper;
 	
