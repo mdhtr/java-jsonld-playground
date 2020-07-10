@@ -232,11 +232,37 @@ class JacksonJsonldSerializationTest {
 	}
 	
 	@Test
+	@DisplayName(value = "when JsonldProperty annotation is used together with the JsonLdResource builder " +
+			"then @context is added like the following: " +
+			"all fields that are given a name with JsonldProperty will be included in the @context;  " +
+			"@context will contain a mapping from field name to the value specified in the JsonldProperty annotation")
+	void jsonldPropertyAnnotationAndJsonLdResourceBuilder() throws JsonProcessingException {
+		class Person {
+			public String id = "http://example.com/person/1234";
+			@JsonldProperty(value = "fullName")
+			public String name = "Example Name";
+		}
+		
+		Person person = new Person();
+		ioinformarics.oss.jackson.module.jsonld.JsonldResource jsonldResource =
+				ioinformarics.oss.jackson.module.jsonld.JsonldResource.Builder.create()
+						.build(person);
+		
+		assertEquals("{" + NEWLINE +
+				"  \"@context\" : {" + NEWLINE +
+				"    \"name\" : \"fullName\"" + NEWLINE +
+				"  }," + NEWLINE +
+				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
+				"  \"name\" : \"Example Name\"" + NEWLINE +
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonldResource));
+	}
+	
+	@Test
 	@DisplayName(value = "when JsonldResource and JsonldProperty annotations are used together " +
 			"then @context is added like the following: " +
 			"all fields that are given a name with JsonldProperty will be included in the @context;  " +
 			"@context will contain a mapping from field name to the value specified in the JsonldProperty annotation")
-	void jsonldResourceAndJsonldPropertyAnnotations() throws JsonProcessingException {
+	void jsonldPropertyAndJsonldResourceAnnotations() throws JsonProcessingException {
 		@JsonldResource
 		class Person {
 			public String id = "http://example.com/person/1234";
@@ -276,13 +302,54 @@ class JacksonJsonldSerializationTest {
 	}
 	
 	@Test
+	@DisplayName(value = "when JsonldLink annotation is used together with the JsonLdResource builder " +
+			"then @context is added like the following: " +
+			"@context will contain a mapping from `name` to `rel` specified in the @JasonldLink annotation " +
+			"and a @type: @id will be added to them to mark the `href` values as links/IRIs, " +
+			"however, the link fields with the href value are not added to the object")
+	void jsonldLinkAnnotationAndJsonLdResourceBuilder() throws JsonProcessingException {
+		@JsonldLink(rel = "http://example.com/vocab/link", name = "linkField1", href = "http://example.com/link1")
+		@JsonldLink(rel = "http://example.com/vocab/link", name = "linkField2", href = "http://example.com/link2")
+		@JsonldLink(rel = "http://example.com/vocab/link", name = "linkField3", href = "http://example.com/link3")
+		class Person {
+			public String id = "http://example.com/person/1234";
+			public String name = "Example Name";
+		}
+		
+		Person person = new Person();
+		
+		ioinformarics.oss.jackson.module.jsonld.JsonldResource jsonldResource =
+				ioinformarics.oss.jackson.module.jsonld.JsonldResource.Builder.create()
+						.build(person);
+		
+		assertEquals("{" + NEWLINE +
+				"  \"@context\" : {" + NEWLINE +
+				"    \"linkField1\" : {" + NEWLINE +
+				"      \"@id\" : \"http://example.com/vocab/link\"," + NEWLINE +
+				"      \"@type\" : \"@id\"" + NEWLINE +
+				"    }," + NEWLINE +
+				"    \"linkField2\" : {" + NEWLINE +
+				"      \"@id\" : \"http://example.com/vocab/link\"," + NEWLINE +
+				"      \"@type\" : \"@id\"" + NEWLINE +
+				"    }," + NEWLINE +
+				"    \"linkField3\" : {" + NEWLINE +
+				"      \"@id\" : \"http://example.com/vocab/link\"," + NEWLINE +
+				"      \"@type\" : \"@id\"" + NEWLINE +
+				"    }" + NEWLINE +
+				"  }," + NEWLINE +
+				"  \"id\" : \"http://example.com/person/1234\"," + NEWLINE +
+				"  \"name\" : \"Example Name\"" + NEWLINE +
+				"}", objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonldResource));
+	}
+	
+	@Test
 	@DisplayName(value = "when JsonldResource and JsonldLink annotations are used together " +
 			"then @context is added like the following: " +
 			"the `name` values from the @JsonldLink will be fields in the object, " +
 			"their values will be the corresponding `href` values from the annotation;  " +
 			"@context will contain a mapping from `name` to `rel` specified in the @JasonldLink annotation " +
 			"and a @type: @id will be added to them to mark the `href` values as links/IRIs")
-	void jsonldResourceAndJsonldLinkAnnotation() throws JsonProcessingException {
+	void jsonldLinkAndJsonldResourceAnnotations() throws JsonProcessingException {
 		@JsonldLink(rel = "http://example.com/vocab/link", name = "linkField1", href = "http://example.com/link1")
 		@JsonldLink(rel = "http://example.com/vocab/link", name = "linkField2", href = "http://example.com/link2")
 		@JsonldLink(rel = "http://example.com/vocab/link", name = "linkField3", href = "http://example.com/link3")
